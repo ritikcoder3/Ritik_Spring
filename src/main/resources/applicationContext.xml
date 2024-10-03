@@ -5,10 +5,46 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean name="emp" class="spring.core.entity.Employee">
-         <property name="id" value="101"/>
+    
+      <bean name="add1" class="spring.core.entity.Address">
+         <property name="city" value="Saharanpur"/>
+         <property name="state" value="UP"/>
+      </bean>
+      
+      <bean name="add2" class="spring.core.entity.Address">
+         <property name="city" value="Roorkee"/>
+         <property name="state" value="UK"/>
+      </bean>
+      
+      
+    
+    <bean name="emp1" class="spring.core.entity.Employee">
+         <property name="id" value="101"/>   <!-- property tag will create a bean by calling setters -->
          <property name="name" value="Ritik"/>
-          <property name="gender" value="Male"/>
+         <property name="gender" value="Male"/>
+         <property name="address" ref="add1"/>
     </bean>
+    
+    <bean name="emp2" class="spring.core.entity.Employee">
+         <property name="id" value="102"/>   
+         <property name="name" value="Sagar"/>
+         <property name="gender" value="Male"/>
+         <property name="address" ref="add2"/>
+    </bean>
+    
+   <bean name="emp3" class="spring.core.entity.Employee">
+         <property name="id" value="103"/>   
+         <property name="name" value="Muskan"/>
+         <property name="gender" value="Female"/>
+         <property name="address" ref="add1"/>
+    </bean>
+    
+    
+    
+   
+    
+
+    
+     
 
 </beans>

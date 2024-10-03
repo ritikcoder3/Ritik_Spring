@@ -4,15 +4,23 @@ public class Employee {
 	private int id;
 	private String name;
 	private String gender;
+	private Address address;
+	
+	
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
+		System.out.println("hello Employee");   // constructor calling without create object new keyword
+		System.out.println("----------------");
 	}
-	public Employee(int id, String name, String gender) {
+	
+	
+
+	public Employee(int id, String name, String gender, Address address) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
+		this.address = address;
 	}
 	public int getId() {
 		return id;
@@ -32,11 +40,26 @@ public class Employee {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + "]";
+		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", address=" + address + "]";
 	}
 	
 	
+	
+//	public void display() 
+//	{
+//		System.out.println("Id : "+id);	
+//		System.out.println("Name : "+name);
+//		System.out.println("Gender : "+gender);
+//		
+//	}
 
 }
