@@ -4,41 +4,78 @@
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- bean definitions here -->
-    
-      <bean name="add1" class="spring.core.entity.Address">
+<!-- Wiring for explicitly using ref and correct bean name -->
+      <bean name="add1" class="spring.core.entity.Address" > 
          <property name="city" value="Saharanpur"/>
          <property name="state" value="UP"/>
       </bean>
-      
-      <bean name="add2" class="spring.core.entity.Address">
+       
+      <bean name="emp1" class="spring.core.entity.Employee" > 
+		      <property name="id" value="101"/> 
+		      <property name="name" value="Nitika"/> 
+		      <property name="gender" value="Female"/> 
+		      <property name="address" ref="add1"/> 
+	 </bean> 
+	  
+<!-- auto Wiring for  using byName-->
+      <bean name="address" class="spring.core.entity.Address" > 
          <property name="city" value="Roorkee"/>
          <property name="state" value="UK"/>
       </bean>
-      
-      
-    
-    <bean name="emp1" class="spring.core.entity.Employee">
-         <property name="id" value="101"/>   <!-- property tag will create a bean by calling setters -->
-         <property name="name" value="Ritik"/>
-         <property name="gender" value="Male"/>
-         <property name="address" ref="add1"/>
-    </bean>
-    
-    <bean name="emp2" class="spring.core.entity.Employee">
-         <property name="id" value="102"/>   
-         <property name="name" value="Sagar"/>
-         <property name="gender" value="Male"/>
-         <property name="address" ref="add2"/>
-    </bean>
-    
-   <bean name="emp3" class="spring.core.entity.Employee">
-         <property name="id" value="103"/>   
-         <property name="name" value="Muskan"/>
-         <property name="gender" value="Female"/>
-         <property name="address" ref="add1"/>
-    </bean>
-    
+       
+      <bean name="emp2" class="spring.core.entity.Employee" autowire="byName"> 
+		      <property name="id" value="102"/> 
+		      <property name="name" value="Muskan"/> 
+		      <property name="gender" value="Female"/> 
+	 </bean> 
+	 
+	 
+<!-- without other bean using inject the adrress and using nested bean  -->
+	 <bean id="emp4" class="spring.core.entity.Employee">
+	       <property name="id" value="102"/>
+	       <property name="name" value="Ritik"/> 
+	       <property name="gender" value="Male"/> 
+		   <property name="address">
+		       <bean class="spring.core.entity.Address">  <!-- Nested bean -->
+		       <property name="city" value="Noida"/>
+		       <property name="state" value="UP"/>
+		       </bean> 
+		   </property>
+		 <property name="contacts">
+		       <list>     <!-- list allow duplicate element -->
+		       <value>954845</value>
+	       	   <value>954845</value>
+		       <value>954845</value>
+		       <value>954845</value>
+		       <value>95484560</value>
+		       </list>
+		</property>
+		<property name="set">
+		       <set>    <!-- set not allow duplicate element -->
+		         <value>954845</value>
+		         <value>954846</value>
+		         <value>954847</value>
+		         <value>954848</value>
+		         <value>954849</value>
+		         <value>954845</value>
+		         <value>954845</value>
+              </set>
+		 </property>
+		 <property name="map">
+		        <map>
+		        <entry key="1" value="ONE"></entry>
+		        <entry key="2" value="TWO"></entry>
+		        <entry key="3" value="THREE"></entry>
+		        <entry key="4" value="FOUR"></entry>
+		        <entry key="5" value="FIVE"></entry>
+		        <entry key="1" value="oneeee"></entry>
+		        </map>
+		 </property>
+	</bean>
+	
+		 
+     
+       
     
     
    
